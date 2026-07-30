@@ -1,0 +1,16 @@
+version: 2
+
+sources:
+  - name: raw
+    database: ECOM_DB
+    schema: RAW
+    tables:
+      - name: customers
+      - name: bookings
+      - name: listings
+      - name: sellers
+      - name: order_items
+      - name: order_payments
+      - name: order_reviews
+      - name: geolocation
+      
