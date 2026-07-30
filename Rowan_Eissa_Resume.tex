@@ -1,0 +1,315 @@
+\documentclass[10pt, letterpaper]{article}
+
+% Packages:
+\usepackage[
+    ignoreheadfoot, % set margins without considering header and footer
+    top=2 cm, % seperation between body and page edge from the top
+    bottom=2 cm, % seperation between body and page edge from the bottom
+    left=2 cm, % seperation between body and page edge from the left
+    right=2 cm, % seperation between body and page edge from the right
+    footskip=1.0 cm, % seperation between body and footer
+    % showframe % for debugging 
+]{geometry} % for adjusting page geometry
+\usepackage{titlesec} % for customizing section titles
+\usepackage{tabularx} % for making tables with fixed width columns
+\usepackage{array} % tabularx requires this
+\usepackage[dvipsnames]{xcolor} % for coloring text
+\definecolor{primaryColor}{RGB}{0, 0, 0} % define primary color
+\usepackage{enumitem} % for customizing lists
+\usepackage{fontawesome5} % for using icons
+\usepackage{amsmath} % for math
+\usepackage[
+    pdftitle={Rowan Eissa CV},
+    pdfauthor={Rowan Eissa},
+    colorlinks=true,
+    urlcolor=primaryColor
+]{hyperref} % for links, metadata and bookmarks
+\usepackage[pscoord]{eso-pic} % for floating text on the page
+\usepackage{calc} % for calculating lengths
+\usepackage{bookmark} % for bookmarks
+\usepackage{lastpage} % for getting the total number of pages
+\usepackage{changepage} % for one column entries (adjustwidth environment)
+\usepackage{paracol} % for two and three column entries
+\usepackage{ifthen} % for conditional statements
+\usepackage{needspace} % for avoiding page brake right after the section title
+\usepackage{iftex} % check if engine is pdflatex, xetex or luatex
+
+% Ensure that generate pdf is machine readable/ATS parsable:
+\ifPDFTeX
+    \input{glyphtounicode}
+    \pdfgentounicode=1
+    \usepackage[T1]{fontenc}
+    \usepackage[utf8]{inputenc}
+    \usepackage{lmodern}
+\fi
+
+\usepackage{charter}
+
+% Some settings:
+\raggedright
+\AtBeginEnvironment{adjustwidth}{\partopsep0pt} % remove space before adjustwidth environment
+\pagestyle{empty} % no header or footer
+\setcounter{secnumdepth}{0} % no section numbering
+\setlength{\parindent}{0pt} % no indentation
+\setlength{\topskip}{0pt} % no top skip
+\setlength{\columnsep}{0.15cm} % set column seperation
+\pagenumbering{gobble} % no page numbering
+
+\titleformat{\section}{\needspace{4\baselineskip}\bfseries\large}{}{0pt}{}[\vspace{1pt}\titlerule]
+
+\titlespacing{\section}{
+    % left space:
+    -1pt
+}{
+    % top space:
+    0.3 cm
+}{
+    % bottom space:
+    0.2 cm
+} % section title spacing
+
+\renewcommand\labelitemi{$\vcenter{\hbox{\small$\bullet$}}$} % custom bullet points
+\newenvironment{highlights}{
+    \begin{itemize}[
+        topsep=0.10 cm,
+        parsep=0.10 cm,
+        partopsep=0pt,
+        itemsep=0pt,
+        leftmargin=0.4 cm + 10pt
+    ]
+}{
+    \end{itemize}
+} % new environment for highlights
+
+\newenvironment{highlightsforbulletentries}{
+    \begin{itemize}[
+        topsep=0.10 cm,
+        parsep=0.10 cm,
+        partopsep=0pt,
+        itemsep=0pt,
+        leftmargin=10pt
+    ]
+}{
+    \end{itemize}
+} % new environment for highlights for bullet entries
+
+\newenvironment{onecolentry}{
+    \begin{adjustwidth}{
+        0.2 cm + 0.00001 cm
+    }{
+        0.2 cm + 0.00001 cm
+    }
+}{
+    \end{adjustwidth}
+} % new environment for one column entries
+
+\newenvironment{twocolentry}[2][]{
+    \onecolentry
+    \def\secondColumn{#2}
+    \setcolumnwidth{\fill, 4.5 cm}
+    \begin{paracol}{2}
+}{
+    \switchcolumn \raggedleft \secondColumn
+    \end{paracol}
+    \endonecolentry
+} % new environment for two column entries
+
+\newenvironment{header}{
+    \setlength{\topsep}{0pt}\par\kern\topsep\centering\linespread{1.5}
+}{
+    \par\kern\topsep
+} % new environment for the header
+
+\newcommand{\placelastupdatedtext}{% \unskip because \installs automatically adds a space
+    \absoluteplacement{%
+        \strictpagechecktrue%
+        \checkoddpage%
+        \ifoddpage%
+            \put(\paperwidth - 2.0 cm, \paperheight - 1.2 cm){\makebox[0pt][r]{\normalfont\scriptsize Last updated in September 2023}}%
+        \else%
+            \put(2.0 cm, \paperheight - 1.2 cm){\makebox[0pt][l]{\normalfont\scriptsize Last updated in September 2023}}%
+        \fi%
+    }%
+}
+
+\begin{document}
+    \newcommand{\AND}{\unskip
+        \cleaders\copy\ANDbox\hskip\wd\ANDbox
+        \ignorespaces
+    }
+    \newsavebox\ANDbox
+    \sbox\ANDbox{$|$}
+
+    \begin{header}
+        \fontsize{25 pt}{25 pt}\selectfont Rowan Eissa
+
+        \vspace{5 pt}
+
+        \normalsize
+        \mbox{Cairo, Egypt}%
+        \kern 5.0 pt%
+        \AND%
+        \kern 5.0 pt%
+        \mbox{\href{mailto:rowanaymn0284@gmail.com}{rowanaymn0284@gmail.com}}%
+        \kern 5.0 pt%
+        \AND%
+        \kern 5.0 pt%
+        \mbox{\href{tel:+20-128-457-3860}{+20 128 457 3860}}%
+        \kern 5.0 pt%
+        \AND%
+        \kern 5.0 pt%
+        \mbox{\href{https://linkedin.com/in/rowan-eissa-128171204}{linkedin.com/in/rowan-eissa-128171204}}%
+        \kern 5.0 pt%
+        \AND%
+        \kern 5.0 pt%
+        \mbox{\href{https://github.com/Rowan123204}{github.com/Rowan123204}}%
+    \end{header}
+
+    \vspace{5 pt - 0.3 cm}
+
+    \section{Education}
+
+        \begin{twocolentry}{
+            Oct 2023 – Jul 2027
+        }
+            \textbf{Alexandria University, Faculty of Science}, BS in Computer Science\end{twocolentry}
+
+        \vspace{0.10 cm}
+        \begin{onecolentry}
+            \begin{highlights}
+                \item \textbf{GPA:} 3.1/4.0
+            \end{highlights}
+        \end{onecolentry}
+
+    \section{Projects}
+
+        \begin{twocolentry}{
+            \href{https://github.com/Rowan123204/ecommerce-dbt-snowflake}{GitHub}
+        }
+            \textbf{Olist Cloud Data Pipeline}\end{twocolentry}
+
+        \vspace{0.10 cm}
+        \begin{onecolentry}
+            \begin{highlights}
+                \item Built a data transformation pipeline using \textbf{dbt} and \textbf{Snowflake}, modeling Brazilian e-commerce data (100k+ records) using a Medallion Architecture (Bronze, Silver, Gold).
+                \item Developed 8 staging views to clean raw data and 3 analytics-ready tables for business reporting using \textbf{SQL}.
+                \item Configured custom schemas and materialization strategies (views vs. tables) in `dbt\_project.yml` for cost and performance optimization.
+                \item Used \textbf{Git} and \textbf{GitHub} for version control and documented the project thoroughly for portfolio presentation.
+            \end{highlights}
+        \end{onecolentry}
+
+        \vspace{0.2 cm}
+
+        \begin{twocolentry}{
+            \href{https://github.com/Rowan123204/superstore-sales-intelligence}{GitHub}
+        }
+            \textbf{Superstore Sales Intelligence}\end{twocolentry}
+
+        \vspace{0.10 cm}
+        \begin{onecolentry}
+            \begin{highlights}
+                \item Built a data loading pipeline using \textbf{Python} and \textbf{Pandas} to clean and load retail sales data into a \textbf{PostgreSQL} database.
+                \item Designed \textbf{SQL} queries to analyze regional performance, product profitability, and return patterns.
+                \item Created interactive \textbf{Tableau} dashboards to visualize data-driven insights for business decision-making.
+            \end{highlights}
+        \end{onecolentry}
+
+        \vspace{0.2 cm}
+
+        \begin{twocolentry}{
+            \href{https://github.com/Rowan123204/olist-postgresql}{GitHub}
+        }
+            \textbf{Olist SQL Analytics Project}\end{twocolentry}
+
+        \vspace{0.10 cm}
+        \begin{onecolentry}
+            \begin{highlights}
+                \item Conducted business analysis on a real-world e-commerce dataset using advanced \textbf{SQL} queries in \textbf{PostgreSQL}.
+                \item Applied Common Table Expressions (CTEs), window functions, aggregations, and complex joins to explore customer behavior and revenue trends.
+            \end{highlights}
+        \end{onecolentry}
+
+        \vspace{0.2 cm}
+
+        \begin{twocolentry}{
+            \href{https://github.com/Rowan123204/ecommerce-customer-churn}{GitHub}
+        }
+            \textbf{E-Commerce Customer Churn Prediction}\end{twocolentry}
+
+        \vspace{0.10 cm}
+        \begin{onecolentry}
+            \begin{highlights}
+                \item Built a baseline machine learning model to predict customer churn using behavioral and transactional data from 50,000 customers.
+                \item Performed exploratory data analysis (EDA), data preprocessing, and feature engineering using \textbf{Python}, \textbf{Pandas}, and \textbf{Scikit-learn}.
+            \end{highlights}
+        \end{onecolentry}
+
+    \section{Experience \& Training}
+
+        \begin{twocolentry}{
+            Dec 2025 – Present
+        }
+            \textbf{Machine Learning Trainee}, Digital Egypt Pioneers Initiative (DEPI)\end{twocolentry}
+
+        \vspace{0.10 cm}
+        \begin{onecolentry}
+            \begin{highlights}
+                \item Practicing data analysis and machine learning fundamentals through structured coursework.
+                \item Working with data preprocessing, feature engineering, and classical ML algorithms using Python.
+            \end{highlights}
+        \end{onecolentry}
+
+        \vspace{0.2 cm}
+
+        \begin{twocolentry}{
+            Feb 2026 – Mar 2026
+        }
+            \textbf{AI for Business Training Program}, National Telecommunications Institute (NTI)\end{twocolentry}
+
+        \vspace{0.10 cm}
+        \begin{onecolentry}
+            \begin{highlights}
+                \item Completed an intensive training program focused on data analysis fundamentals and Python for data science.
+                \item Studied supervised and unsupervised learning concepts and their applications in business decision-making.
+            \end{highlights}
+        \end{onecolentry}
+
+    \section{Skills}
+
+        \begin{onecolentry}
+            \begin{highlightsforbulletentries}
+                \item \textbf{Languages:} SQL, Python
+                \item \textbf{Databases \& Warehouses:} PostgreSQL, Snowflake
+                \item \textbf{Data Engineering Tools:} dbt (data build tool), Git, GitHub
+                \item \textbf{Libraries:} Pandas, NumPy, Scikit-learn, Matplotlib, Seaborn
+                \item \textbf{Data Visualization:} Tableau
+            \end{highlightsforbulletentries}
+        \end{onecolentry}
+
+    \section{Leadership \& Activities}
+
+        \begin{twocolentry}{
+            2025 – Present
+        }
+            \textbf{Vice Head, Organizing Committee}, Hackerrank AUFS Student Chapter\end{twocolentry}
+        \vspace{0.10 cm}
+        \begin{onecolentry}
+            \begin{highlights}
+                \item Coordinating teams to manage logistics, timelines, and responsibilities for student events.
+            \end{highlights}
+        \end{onecolentry}
+
+        \vspace{0.2 cm}
+
+        \begin{twocolentry}{
+            Aug 2024
+        }
+            \textbf{Customer Experience / Sales Team Member}, AIESEC in Egypt\end{twocolentry}
+        \vspace{0.10 cm}
+        \begin{onecolentry}
+            \begin{highlights}
+                \item Managed applicant tracking pipelines and collaborated with team members to achieve targets.
+            \end{highlights}
+        \end{onecolentry}
+
+\end{document}
