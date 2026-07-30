@@ -1,4 +1,4 @@
-﻿# Olist E-Commerce Data Pipeline
+# Olist E-Commerce Data Pipeline
 
 A production-style cloud data engineering pipeline built on **dbt + Snowflake**, transforming raw Brazilian e-commerce data into analytics-ready tables using a **Medallion Architecture** (Bronze → Silver → Gold).
 
@@ -161,9 +161,3 @@ dbt run --select marts.*
 - [ ] Cloud ingestion simulation with LocalStack (AWS S3)
 - [ ] Data quality tests with dbt `tests:`
 - [ ] Auto-generated documentation with `dbt docs`
-
----
-
-## Author
-
-**Rowan** — Aspiring Data Engineer
