@@ -1,0 +1,23 @@
+name: Compile LaTeX CV
+
+on:
+  push:
+    paths:
+      - 'Rowan_Eissa_Resume.tex'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Compile LaTeX
+        uses: xu-cheng/latex-action@v2
+        with:
+          root_file: Rowan_Eissa_Resume.tex
+          
+      - name: Upload PDF artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: Resume-PDF
+          path: Rowan_Eissa_Resume.pdf
