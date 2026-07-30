@@ -13,7 +13,7 @@ renamed as (
     from source
 ),
 
--- Feature Engineering: تجميع الرموز البريدية المكررة وأخذ متوسط الإحداثيات لكل رمز
+-- Deduplicate: one row per zip code using average coordinates
 deduplicated as (
     select
         zip_code_prefix,

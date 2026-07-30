@@ -19,7 +19,7 @@ renamed as (
         price                          as item_price_brl,
         freight_value                  as freight_cost_brl,
 
-        -- Feature Engineering: حساب التكلفة الكلية للسلعة (سعر السلعة + تكلفة الشحن)
+        -- Feature Engineering: total line cost = item price + freight
         (price + freight_value)        as total_line_item_brl
 
     from source

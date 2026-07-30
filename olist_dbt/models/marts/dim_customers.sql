@@ -6,7 +6,7 @@ bookings as (
     select * from {{ ref('stg_bookings') }}
 ),
 
--- تجميع بيانات الحجوزات لكل عميل على حدة
+-- Aggregate order history per customer
 customer_bookings as (
     select
         customer_id,
@@ -17,7 +17,7 @@ customer_bookings as (
     group by customer_id
 ),
 
--- الدمج النهائي لبيانات العميل مع إحصائياته
+-- Join customer profile with their order statistics
 final as (
     select
         c.customer_unique_id,

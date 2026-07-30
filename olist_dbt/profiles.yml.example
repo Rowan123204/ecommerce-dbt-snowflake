@@ -1,0 +1,16 @@
+# Copy this file to ~/.dbt/profiles.yml and fill in your credentials
+# NEVER commit your actual profiles.yml - it contains sensitive credentials
+
+olist_dbt:
+  outputs:
+    dev:
+      type: snowflake
+      account: YOUR_ACCOUNT_ID       # e.g. abc12345.us-east-1
+      user: YOUR_USERNAME
+      password: YOUR_PASSWORD
+      role: ACCOUNTADMIN
+      warehouse: ECOM_WH
+      database: ECOM_DB
+      schema: staging
+      threads: 1
+  target: dev

@@ -4,21 +4,21 @@ with source as (
 
 renamed as (
     select
-        -- 1. الكود الأساسي (الـ Keys)
+        -- Primary Keys
         order_id,
         customer_id,
 
-        -- 2. تنظيف حالة الطلب (نخليه حروف صغيرة وممسوح منه أي مسافات زيادة)
+        -- Normalize order status to lowercase for consistency
         lower(trim(order_status)) as order_status,
 
-        -- 3. التواريخ (مترتبة وجاهزة)
+        -- Rename timestamp columns to cleaner names
         order_purchase_timestamp       as ordered_at,
         order_approved_at              as approved_at,
         order_delivered_carrier_date   as shipped_at,
         order_delivered_customer_date  as delivered_at,
         order_estimated_delivery_date  as estimated_delivery_at,
 
-        -- 4. عملية حسابية: حساب فرق الأيام الفعلي بين تاريخ الشراء وتاريخ التوصيل
+        -- Feature Engineering: calculate actual delivery duration in days
         datediff(
             'day',
             order_purchase_timestamp,

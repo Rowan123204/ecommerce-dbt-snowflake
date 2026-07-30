@@ -17,11 +17,11 @@ renamed as (
         product_width_cm                                    as width_cm,
         product_photos_qty                                  as photos_count,
 
-        -- Fix Typos
+        -- Fix source typos (lenght -> length)
         product_name_lenght                                 as product_name_length,
         product_description_lenght                          as product_description_length,
 
-        -- Volume calculation
+        -- Feature Engineering: calculate product volume
         (product_length_cm * product_height_cm * product_width_cm) as volume_cm3
 
     from source
