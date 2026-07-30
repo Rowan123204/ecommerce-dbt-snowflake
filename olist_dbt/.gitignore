@@ -3,3 +3,9 @@ target/
 dbt_packages/
 logs/
 .env
+
+macros/
+tests/
+analyses/
+snapshots/
+seeds/
